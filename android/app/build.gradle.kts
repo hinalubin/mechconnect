@@ -7,7 +7,8 @@ plugins {
 
 android {
     namespace = "com.example.mechconnect"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 34   // ← REQUIRED
+
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
@@ -16,24 +17,23 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+        jvmTarget = "11"
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.example.mechconnect"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
+
+        // Set these manually (do NOT use flutter.minSdk etc.)
         minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
-        versionCode = flutter.versionCode
-        versionName = flutter.versionName
+        targetSdk = 34
+
+        versionCode = 1
+        versionName = "1.0"
     }
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+            // Temporary signing so flutter run --release works
             signingConfig = signingConfigs.getByName("debug")
         }
     }

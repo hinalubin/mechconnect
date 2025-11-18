@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:mechconnect/addvehicle.dart';
-import 'package:mechconnect/chatbot.dart';
-import 'package:mechconnect/notifications.dart';
-import 'package:mechconnect/pickup.dart';
-import 'package:mechconnect/viewservicecenter.dart';
+import 'package:mechconnect/user/addvehicle.dart';
+
+
+import 'package:mechconnect/user/chatbot.dart';
+import 'package:mechconnect/user/notifications.dart';
+import 'package:mechconnect/user/pickup.dart';
+import 'package:mechconnect/user/tracking.dart';
+import 'package:mechconnect/user/viewservicecenter.dart';
+
 
 void main() {
   runApp(MechConnectApp());
@@ -189,25 +193,37 @@ class HomeScreen extends StatelessWidget {
                 ),
 
                 // ----- Track Mechanic -----
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.blue.withOpacity(0.15),
-                    borderRadius: BorderRadius.circular(14),
-                  ),
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.person_search, size: 40, color: Colors.blue),
-                        SizedBox(height: 10),
-                        Text(
-                          "Tracking",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Trackingpage()),
+                    );
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.blue.withOpacity(0.15),
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.person_search,
+                            size: 40,
+                            color: Colors.blue,
                           ),
-                        ),
-                      ],
+                          SizedBox(height: 10),
+                          Text(
+                            "Tracking",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

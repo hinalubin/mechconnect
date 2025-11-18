@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mechconnect/report.dart';
+import 'package:mechconnect/user/report.dart';
 
 class Viewservicecenter extends StatelessWidget {
   Viewservicecenter({super.key});
@@ -48,6 +48,10 @@ class Viewservicecenter extends StatelessWidget {
                     },
                     child: Card(
                       child: ListTile(
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          color: const Color.fromARGB(167, 0, 0, 0),size: 20,
+                        ),
                         title: Text(Service[index]["Service center name"]),
                         subtitle: Column(
                           children: [

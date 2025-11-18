@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mechconnect/addvehicle.dart';
-import 'package:mechconnect/home.dart';
-import 'package:mechconnect/login.dart';
-import 'package:mechconnect/register.dart';
+import 'package:mechconnect/mechanic/home.dart';
+import 'package:mechconnect/service/home.dart';
+import 'package:mechconnect/service/register.dart';
+
+import 'package:mechconnect/user/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: MechConnectApp()
+      home: Homemechanic()
     ,debugShowCheckedModeBanner: false,
     );
   }

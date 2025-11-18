@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mechconnect/login.dart';
+import 'package:mechconnect/user/login.dart';
+
 
 class Register extends StatefulWidget {
   Register({super.key});

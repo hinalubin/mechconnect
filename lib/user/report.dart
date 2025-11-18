@@ -2,8 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:mechconnect/complaint.dart';
-import 'package:mechconnect/feedback.dart';
+import 'package:mechconnect/user/complaint.dart';
+import 'package:mechconnect/user/feedback.dart';
+
 
 class Report extends StatefulWidget {
   Report({super.key});

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class Notifications extends StatelessWidget {
   Notifications({super.key});
   List<dynamic> Notification = [
-    {"status": "your request accepted"},
-    {"status": "your request rejected"},
+    {"service center": "theertha", "status": "your request accepted","Date":"13-08-25"},
+    {"service center": "hina", "status": "your request rejected","Date":"03-09-25"},
   ];
 
   @override
@@ -26,7 +26,14 @@ class Notifications extends StatelessWidget {
                 itemCount: Notification.length,
                 itemBuilder: (context, index) {
                   return Card(
-                    child: ListTile(title: Text(Notification[index]["status"])),
+                    child: ListTile(trailing: Text(Notification[index]["Date"]),
+                      title: Text(Notification[index]["service center"]),
+                      subtitle: Column(
+                        children: [
+                          Text(Notification[index]["status"]),
+                        ],
+                      ),
+                    ),
                   );
                 },
               ),

@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:mechconnect/viewvehicle.dart';
+import 'package:mechconnect/user/viewvehicle.dart';
+
 
 class Addvehicle extends StatelessWidget {
   const Addvehicle({super.key});
