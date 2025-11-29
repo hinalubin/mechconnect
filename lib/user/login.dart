@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mechconnect/mechanic/register.dart';
+import 'package:mechconnect/pickup/register.dart';
+import 'package:mechconnect/service/register.dart';
+import 'package:mechconnect/user/register.dart';
 
 class Login extends StatefulWidget {
   Login({super.key});
@@ -15,6 +19,100 @@ class _LoginState extends State<Login> {
   final formkey = GlobalKey<FormState>();
 
   bool visible = true;
+  void show() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text("who you are ?"),
+        content: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Registerservice()),
+                  );
+                },
+                child: Text(
+                  "Service center",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.blue.withOpacity(0.15),
+                  minimumSize: Size(double.infinity, 40),
+                ),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Registermechanic()),
+                  );
+                },
+                child: Text(
+                  "Mechanic",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.blue.withOpacity(0.15),
+                  minimumSize: Size(double.infinity, 40),
+                ),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Registerpickup()),
+                  );
+                },
+                child: Text(
+                  "Pickup",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.blue.withOpacity(0.15),
+                  minimumSize: Size(double.infinity, 40),
+                ),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Register()),
+                  );
+                },
+                child: Text(
+                  "User",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.blue.withOpacity(0.15),
+                  minimumSize: Size(double.infinity, 40),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +198,9 @@ class _LoginState extends State<Login> {
                 children: [
                   Text("Don't Have An Account ?"),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      show();
+                    },
                     child: Text(
                       "Register",
                       style: TextStyle(

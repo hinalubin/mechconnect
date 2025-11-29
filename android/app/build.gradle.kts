@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.example.mechconnect"
-    compileSdk = 34   // ← REQUIRED
+    compileSdk = 36 // ← REQUIRED
 
     ndkVersion = flutter.ndkVersion
 
@@ -25,7 +25,7 @@ android {
 
         // Set these manually (do NOT use flutter.minSdk etc.)
         minSdk = flutter.minSdkVersion
-        targetSdk = 34
+        targetSdk = 36
 
         versionCode = 1
         versionName = "1.0"

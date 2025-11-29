@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mechconnect/mechanic/home.dart';
+import 'package:mechconnect/mechanic/register.dart';
+import 'package:mechconnect/pickup/home.dart';
+import 'package:mechconnect/pickup/register.dart';
 import 'package:mechconnect/service/home.dart';
 import 'package:mechconnect/service/register.dart';
 
@@ -35,8 +38,8 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Homemechanic()
-    ,debugShowCheckedModeBanner: false,
+      home: Registermechanic(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

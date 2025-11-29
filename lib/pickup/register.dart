@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mechconnect/user/login.dart';
 
-class Registerservice extends StatefulWidget {
-  Registerservice({super.key});
+class Registerpickup extends StatefulWidget {
+  Registerpickup({super.key});
 
   @override
-  State<Registerservice> createState() => _RegisterserviceState();
+  State<Registerpickup> createState() => _RegisterpickupState();
 }
 
-class _RegisterserviceState extends State<Registerservice> {
+class _RegisterpickupState extends State<Registerpickup> {
   TextEditingController Name = TextEditingController();
 
   TextEditingController Contact = TextEditingController();
@@ -19,13 +19,13 @@ class _RegisterserviceState extends State<Registerservice> {
   TextEditingController Email = TextEditingController();
   TextEditingController Password = TextEditingController();
   TextEditingController ConfirmPassword = TextEditingController();
-  TextEditingController img = TextEditingController(
-    text: 'upload your certificate',
-  );
+  TextEditingController vehicle = TextEditingController();
+  TextEditingController img = TextEditingController(text: 'Upload permit');
 
   final formkey = GlobalKey<FormState>();
   bool visible = true;
   bool visible1 = true;
+
   File? image;
   final ImagePicker picker = ImagePicker();
   Future<void> pickimage() async {
@@ -109,6 +109,24 @@ class _RegisterserviceState extends State<Registerservice> {
               ),
               SizedBox(height: 20),
               TextFormField(
+                controller: vehicle,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Enter your vehicle no ";
+                  }
+                },
+                decoration: InputDecoration(
+                  label: Text("vehicle.no"),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              TextFormField(
                 controller: Password,
                 validator: (value) {
                   if (value == null) {
@@ -177,7 +195,7 @@ class _RegisterserviceState extends State<Registerservice> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-
+                  // labelText: "upload permit",
                   suffixIcon: Padding(
                     padding: const EdgeInsets.fromLTRB(10, 10, 15, 10),
                     child: TextButton(
@@ -201,7 +219,6 @@ class _RegisterserviceState extends State<Registerservice> {
                 ),
               ),
               SizedBox(height: 20),
-
               ElevatedButton(
                 onPressed: () {
                   if (formkey.currentState!.validate()) {
@@ -212,7 +229,7 @@ class _RegisterserviceState extends State<Registerservice> {
                       );
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("upload your certificate")),
+                        SnackBar(content: Text("upload your permit")),
                       );
                     }
                   }

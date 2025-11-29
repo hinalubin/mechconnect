@@ -1,6 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:mechconnect/user/login.dart';
+import 'dart:io';
 
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:mechconnect/user/login.dart';
 
 class Registermechanic extends StatefulWidget {
   Registermechanic({super.key});
@@ -17,10 +19,25 @@ class _RegistermechanicState extends State<Registermechanic> {
   TextEditingController Email = TextEditingController();
   TextEditingController Password = TextEditingController();
   TextEditingController ConfirmPassword = TextEditingController();
+  TextEditingController image = TextEditingController(
+    text: 'upload your certificate',
+  );
 
   final formkey = GlobalKey<FormState>();
   bool visible = true;
-  bool visible1= true;
+  bool visible1 = true;
+  File? pickedfile;
+  final ImagePicker picker = ImagePicker();
+  Future<void> selectedimage() async {
+    XFile? selectimage = await picker.pickImage(source: ImageSource.gallery);
+
+    if (selectimage != null) {
+      setState(() {
+        pickedfile = File(selectimage.path);
+        image.text = selectimage.name;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +143,8 @@ class _RegistermechanicState extends State<Registermechanic> {
                   if (value != Password.text) {
                     return "password doesn't match";
                   }
-                },obscureText: visible1,
+                },
+                obscureText: visible1,
                 decoration: InputDecoration(
                   suffixIcon: IconButton(
                     onPressed: () {
@@ -135,7 +153,9 @@ class _RegistermechanicState extends State<Registermechanic> {
                       });
                     },
                     icon: Icon(
-                      visible1? Icons.visibility_off_rounded : Icons.visibility,
+                      visible1
+                          ? Icons.visibility_off_rounded
+                          : Icons.visibility,
                     ),
                   ),
                   label: Text("Confirm Password"),
@@ -148,13 +168,51 @@ class _RegistermechanicState extends State<Registermechanic> {
                 ),
               ),
               SizedBox(height: 20),
+              TextFormField(
+                controller: image,
+                readOnly: true,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                 
+                  suffixIcon: Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 10, 15, 10),
+                    child: TextButton(
+                      onPressed: () {
+                        selectedimage();
+                      },
+                      child: Text('Upload image'),
+                      style: TextButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(
+                          134,
+                          158,
+                          158,
+                          158,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+
               ElevatedButton(
                 onPressed: () {
                   if (formkey.currentState!.validate()) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Login()),
-                    );
+                    if (pickedfile != null) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Login()),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("upload your certificate")),
+                      );
+                    }
                   }
                 },
                 style: ElevatedButton.styleFrom(
@@ -178,7 +236,13 @@ class _RegistermechanicState extends State<Registermechanic> {
                 children: [
                   Text("Already Have An Acoount ? "),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () { 
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Login()),
+                      );
+
+                    },
                     child: Text(
                       "Login",
                       style: TextStyle(

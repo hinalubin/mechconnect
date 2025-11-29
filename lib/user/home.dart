@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mechconnect/user/addvehicle.dart';
 
-
 import 'package:mechconnect/user/chatbot.dart';
 import 'package:mechconnect/user/notifications.dart';
 import 'package:mechconnect/user/pickup.dart';
 import 'package:mechconnect/user/tracking.dart';
+import 'package:mechconnect/user/viewpayment.dart';
 import 'package:mechconnect/user/viewservicecenter.dart';
-
 
 void main() {
   runApp(MechConnectApp());
@@ -42,7 +41,6 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         actions: [
-          Icon(Icons.build, color: Colors.white),
           SizedBox(width: 15),
           IconButton(
             onPressed: () {
@@ -236,6 +234,26 @@ class HomeScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Viewpayment()),
+                    );
+                  },
+                  child: Column(
+                    children: [
+                      Icon(
+                        Icons.attach_money_sharp,
+                        size: 28,
+                        color: Colors.blue,
+                      ),
+                      SizedBox(height: 4),
+                      Text("Payment", style: TextStyle(fontSize: 13)),
+                    ],
+                  ),
+                ),
+                SizedBox(width: 30),
                 InkWell(
                   onTap: () {
                     Navigator.push(
